@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import isAuth from "../isAuth";
 import classes from "./Dashboard.module.css";
@@ -57,6 +57,8 @@ const Dashboard = () => {
         <button className={`btn ${classes.item}`} onClick={postAutoDataHandler}>
           Trigger Data
         </button>
+      </div>
+      <div className="centered">
         <Chart data1={data1} data2={data2} />
       </div>
     </>

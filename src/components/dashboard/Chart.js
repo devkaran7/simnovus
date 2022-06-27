@@ -26,15 +26,13 @@ const Chart = (props) => {
     ],
   };
   return (
-    <>
+    <div>
       <div className="centered" style={{ width: 900 }}>
         <p style={{ fontSize: 12 }}>Temperature</p>
         <Line data={new_data} />
       </div>
-      <div className="centered" style={{ margin: 0 }}>
         <p style={{ fontSize: 12 }}>Time</p>
-      </div>
-    </>
+    </div>
   );
 };
 
