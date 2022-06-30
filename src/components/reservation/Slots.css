@@ -1,5 +1,16 @@
-.slots button{
+.slots button {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 0.75rem;
+}
+
+.btn-disabled {
+  background-color: rgb(178, 178, 178);
+  border-color: rgb(178, 178, 178);
+}
+
+.btn-disabled:hover {
+  background-color: rgb(178, 178, 178);
+  border-color: rgb(178, 178, 178);
+  cursor: not-allowed;
 }
