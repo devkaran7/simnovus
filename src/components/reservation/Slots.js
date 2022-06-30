@@ -1,11 +1,31 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import Card from "../UI/Card";
 import "./Slots.css";
 
 const Slots = (props) => {
-  const DUMMY_SLOTS = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23,
-  ];
+  //we have the access of ue_name as ue_id;
+  const [slotList, setSlotList] = useState([]);
+  useEffect(async () => {
+    try {
+      const response = await fetch("http://localhost:1337/api/getslots", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ue_name: props.ue_name,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+      const data = await response.json();
+      setSlotList(data.slots);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }, [setSlotList]);
   const bookSlotHandler = async (event) => {
     console.log(event.target.value);
     console.log(props.ue_name);
@@ -32,10 +52,13 @@ const Slots = (props) => {
       console.log(e.message);
     }
   };
+  if (slotList.length === 0) {
+    return <h2>No slots available</h2>;
+  }
   return (
     <Card className="slots">
       <h2>Pick a time slot:</h2>
-      {DUMMY_SLOTS.map((slot) => (
+      {slotList.map((slot) => (
         <button
           className="btn"
           type="button"
