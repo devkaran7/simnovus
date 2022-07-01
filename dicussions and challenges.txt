@@ -1,0 +1,27 @@
+In our project we used influxdb version 1.8.1 
+
+
+Reservation feature:
+
+In the backend we used influxdb to store the data required for implementing the reservation feature 
+
+tags:ue
+fields:busy_slots,free_slots,ue_name
+
+
+time                busy_slots free_slots                                                       ue    ue_name
+----                ---------- ----------                                                      -----  -----
+1656591254419000000 [0,1]      [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]      ue_1  ue_1
+
+here the elements in the list represent the slot of one hour i.e 0 represents 0:00-1:00am slot
+
+the reservation feature seen above is not scalable and there are also few assumptions made 1.each test runs for one hour  2.all the slots start at integer hours
+
+Reason: influxdb doesn't support list as field values, it only supports integers,strings,booleans and floats. [in the above database I have stored the slots list as string "[0,1]" and to updates its values we have to convert it into a list and procedd]
+
+So, for implementing the features like reservation and scheduling it is suggested to use MongoDB instead of an influxdb
+
+
+
+
+
