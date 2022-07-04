@@ -17,7 +17,7 @@ here the elements in the list represent the slot of one hour i.e 0 represents 0:
 
 the reservation feature seen above is not scalable and there are also few assumptions made 1.each test runs for one hour  2.all the slots start at integer hours
 
-Reason: influxdb doesn't support list as field values, it only supports integers,strings,booleans and floats. [in the above database I have stored the slots list as string "[0,1]" and to updates its values we have to convert it into a list and procedd]
+Reason: influxdb doesn't support list as field values, it only supports integers,strings,booleans and floats. [in the above database I have stored the slots list as string "[0,1]" and to update its values we have to convert it into a list and proceed]
 
 So, for implementing the features like reservation and scheduling it is suggested to use MongoDB instead of an influxdb
 
